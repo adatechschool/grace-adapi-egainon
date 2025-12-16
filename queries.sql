@@ -29,7 +29,7 @@
 -- JOIN skills ON resources_skills.skill_id = skill.id
 -- WHERE skills.name = "JavaScript";
 
--- -- Récupérer les ressources dont le titre contient le mot "react" (avec ou sans majuscules)
+-- Récupérer les ressources dont le titre contient le mot "react" (avec ou sans majuscules)
 -- SELECT * 
 -- FROM resources
 -- WHERE title LIKE '%eact';
@@ -63,14 +63,14 @@ GROUP BY name;
 
 -- -- string_agg(expression, delimiter)
 
--- -- Récupérer les 5 ressources les plus récentes avec leur thème
+-- Récupérer les 5 ressources les plus récentes avec leur thème
 -- SELECT title, themes.name
 -- FROM resources
 -- JOIN themes ON resources.theme_id = themes.id
 -- ORDER BY resources.created_at DESC 
 -- LIMIT 3;
 
--- -- Récupérer toutes les compétences qui ne sont associées à aucune ressource
+-- Récupérer toutes les compétences qui ne sont associées à aucune ressource
 -- SELECT 
 -- skills.name 
 -- FROM resources
