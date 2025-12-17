@@ -1,45 +1,31 @@
-//THEMES
+import { Router } from 'express';
+import pool from "../db.js"; 
+
+const router = Router();
 //- [ ] Créer une route `GET` pour les **thèmes**
-app.get("/themes", async function (req, res) {
+router.get("/themes", async function (req, res) {
 const { rows } = await pool.query("SELECT * FROM themes");
 res.json(rows);});
 
-app.listen(3000, () => {
-console.log(":rocket: Serveur lancé : http://localhost:3000");
-});
-
 //- [ ] Créer une route `GET` pour un **thème**
-app.get("/theme", async function (req, res) {
-const { rows } = await pool.query("SELECT name FROM themes WHERE id = 2");
+router.get("/themes/:id", async function (req, res) {
+const {id} = req.params;
+const { rows } = await pool.query(`SELECT * FROM resources WHERE id = ${id}`);
 res.json(rows);});
 
-app.listen(3000, () => {
-console.log(":rocket: Serveur lancé : http://localhost:3000");
-});
-
 //- [ ] Créer une route `POST` pour les **thèmes**
-app.post("/post/themes", async function (req, res) {
+router.post("/post/themes", async function (req, res) {
 await pool.query("INSERT INTO themes (id, name, description) VALUES (5,'API REST','interface de communication entre applications') ");
 res.json( "message: thème ajouté");});
 
-app.listen(3000, () => {
-console.log(":rocket: Serveur lancé : http://localhost:3000");
-});
-
 // - [ ] Créer une route `PUT` pour les **thèmes**
-app.put("/put/themes", async function (req, res) {
+router.put("/put/themes", async function (req, res) {
 await pool.query("UPDATE themes SET description = 'interface de communication entre applis' WHERE id = 5");
 res.json( "message: thème changé");});
 
-app.listen(3000, () => {
-console.log(":rocket: Serveur lancé : http://localhost:3000");
-});
-
 //- [ ] Créer une route `DELETE` pour les **thèmes**
-app.delete("/delete/themes", async function (req, res) {
+router.delete("/delete/themes", async function (req, res) {
 await pool.query("DELETE FROM themes WHERE id = 5");
 res.json( "message: thème supprimé");});
 
-app.listen(3000, () => {
-console.log(":rocket: Serveur lancé : http://localhost:3000");
-});
+export default router;
