@@ -1,8 +1,3 @@
-import express from "express";
-import pool from "./db.js"; 
-
-const app = express();
-
 //RESSOURCES
 // - [ ] Créer une route `GET` pour les **ressources**
 app.get("/ressources", async function (req, res) {
@@ -51,7 +46,3 @@ res.json( "message: ressource supprimée");});
 app.listen(3000, () => {
 console.log(":rocket: Serveur lancé : http://localhost:3000");
 });
-
-
-
-
