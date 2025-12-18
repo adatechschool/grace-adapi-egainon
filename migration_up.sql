@@ -9,8 +9,8 @@ CREATE TYPE resource_type AS ENUM (
 -- Create a new table 'themes' with a primary key and columns
 CREATE TABLE themes (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    name TEXT ,
+    description VARCHAR(255) ,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -19,8 +19,8 @@ CREATE TABLE themes (
 CREATE TABLE resources (
     id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
-    url TEXT NOT NULL,
-    description TEXT NOT NULL,
+    url TEXT,
+    description TEXT,
     type resource_type,
     is_ada BOOLEAN,
     theme_id INTEGER REFERENCES themes(id), 
@@ -31,7 +31,7 @@ CREATE TABLE resources (
 -- Create a new table 'skills' with a primary key and columns
 CREATE TABLE skills (
     id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+    name TEXT 
 );
 
 -- Create a new table 'ressources_skills' with a primary key and columns
