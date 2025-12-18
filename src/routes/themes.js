@@ -5,6 +5,7 @@ const router = Router();
 
 //- [ ] Créer une route `GET` pour les **thèmes**
 router.get("/", async function (req, res) {
+
     try{
 const { rows } = await pool.query("SELECT * FROM themes");
 res.json(rows);
@@ -17,6 +18,7 @@ res.json(rows);
 
 //- [ ] Créer une route `GET` pour un **thème**
 router.get("/:id", async function (req, res) {
+
     try{
 const {id} = req.params;
 const { rows } = await pool.query(`SELECT * FROM resources WHERE id = ${id}`);
@@ -30,6 +32,7 @@ res.json(rows);
 
 //2e verion :
 // router.get("/:id", async function (req, res) {
+
 //     try{
 // const {id} = req.params;
 // const { rows } = await pool.query("SELECT * FROM resources  WHERE id = $1`", [id]);
@@ -44,6 +47,7 @@ res.json(rows);
 
 //- [ ] Créer une route `POST` pour les **thèmes**
 router.post("/", async function (req, res) {
+
     try{
 const name = req.body.name;
 const description = req.body.description;
@@ -59,6 +63,7 @@ res.json( "message: thème ajouté");
 
 // - [ ] Créer une route `PUT` pour les **thèmes**
 router.put("/", async function (req, res) {
+
     try{
 await pool.query("UPDATE themes SET description = 'interface de communication entre applis' WHERE id = 5");
 res.json( "message: thème changé");
@@ -70,9 +75,11 @@ res.json( "message: thème changé");
 });
 
 //- [ ] Créer une route `DELETE` pour les **thèmes**
-router.delete("/", async function (req, res) {
+router.delete("/:id", async function (req, res) {
+
     try{
-await pool.query("DELETE FROM themes WHERE id = 5");
+const {id} = req.params;
+await pool.query(`DELETE FROM themes WHERE id = ${id}`);
 res.json( "message: thème supprimé");
 
     }catch(err){

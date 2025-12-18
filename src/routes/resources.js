@@ -19,6 +19,7 @@ res.json(rows);
 
 // - [ ] Créer une route `GET` pour une **ressource**
 router.get("/:id", async function (req, res) {
+
     try{
 const {id} = req.params;
 const { rows } = await pool.query("SELECT * FROM resources WHERE id = $1`", [id]);
@@ -44,8 +45,8 @@ res.json(rows);
 
 // - [ ] Créer une route `POST` pour les **ressources**
 router.post("/", async function (req, res) {
+    
     try{
-
 const title = req.body.title;
 const url = req.body.url;
 await pool.query("INSERT INTO resources (id, title, url) VALUES (23,$1,$2)", [title, url] );
@@ -60,6 +61,7 @@ res.json( "message: ressource ajoutée");
 
 // - [ ] Créer une route `PUT` pour les **ressources**
 router.put("/", async function (req, res) {
+
     try{
 await pool.query("UPDATE resources SET title = 'Intro à Réact' WHERE id = 1");
 res.json( "message: ressource changée");
@@ -73,9 +75,11 @@ res.json( "message: ressource changée");
 
 
 //- [ ] Créer une route `DELETE` pour les **ressources**
-router.delete("/", async function (req, res) {
+router.delete("/:id", async function (req, res) {
+
     try{
-await pool.query("DELETE FROM resources WHERE id = 6");
+const {id} = req.params;
+await pool.query(`DELETE FROM resources WHERE id = ${id}`);
 res.json( "message: ressource supprimée");
 
  }catch(err){
