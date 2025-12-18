@@ -3,7 +3,7 @@ import pool from "../db.js";
 
 const router = Router();
 // - [ ] Créer une route `GET` pour les **skills**
-router.get("/skills", async function (req, res) {
+router.get("/", async function (req, res) {
 const { rows } = await pool.query("SELECT * FROM skills");
 res.json(rows);});
 
