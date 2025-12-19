@@ -135,7 +135,7 @@
     },
     "/skills": {
       "get": {
-        "summary": "Récupérer toutes les compétences",
+        "summary": "Récupérer toutes les skills",
         "responses": {
           "200": {
             "description": "Succès"
@@ -196,6 +196,70 @@
           }
         }
       }
-    }
+    },
+    "/resources_skills": {
+      "get": {
+        "summary": "Récupérer toutes les resources_skills",
+        "responses": {
+          "200": {
+            "description": "Succès"
+          }
+        }
+      },
+      "post": {
+        "summary": "Créer un resources_skill",
+        "responses": {
+          "200": {
+            "description": "Resources_skill créé"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un resources_skill",
+        "responses": {
+          "200": {
+            "description": "Resources_skill modifié"
+          }
+        }
+      }
+    },
+    "/resources_skills/{id}": {
+      "get": {
+        "summary": "Récupérer un resources_skill par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resources_skill trouvé"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un resources_skill",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "resources_skill supprimé"
+          }
+        }
+      }
   }
+}
 }
