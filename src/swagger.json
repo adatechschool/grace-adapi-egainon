@@ -132,6 +132,70 @@
           }
         }
       }
+    },
+    "/skills": {
+      "get": {
+        "summary": "Récupérer toutes les compétences",
+        "responses": {
+          "200": {
+            "description": "Succès"
+          }
+        }
+      },
+      "post": {
+        "summary": "Créer un skill",
+        "responses": {
+          "200": {
+            "description": "Skill créé"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier un skill",
+        "responses": {
+          "200": {
+            "description": "Skill modifié"
+          }
+        }
+      }
+    },
+    "/skills/{id}": {
+      "get": {
+        "summary": "Récupérer un skill par ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Skill trouvé"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer un skill",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Skill supprimé"
+          }
+        }
+      }
     }
   }
 }
