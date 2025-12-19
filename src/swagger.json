@@ -1,19 +1,110 @@
-  {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "My API",
-      "version": "1.0.0"
-    },
-    "paths": {
-      "/resources": {
-        "get": {
-          "summary": "List all resources",
-          "responses": {
-            "200": {
-              "description": "OK"
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/resources": {
+      "get": {
+        "summary": "Récupérer toutes les ressources",
+        "tags": ["Resources"],
+        "responses": {
+          "200": {
+            "description": "Liste des ressources",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "title": "Cours CSS",
+                    "url": "https://example.com/css"
+                  }
+                ]
+              }
             }
+          }
+        }
+      },
+      "post": {
+        "summary": "Créer une nouvelle ressource",
+        "tags": ["Resources"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "title": "Cours JavaScript",
+                "url": "https://example.com/js"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ressource ajoutée"
+          }
+        }
+      },
+      "put": {
+        "summary": "Modifier une ressource",
+        "description": "Met à jour une ressource (actuellement en dur dans le code)",
+        "tags": ["Resources"],
+        "responses": {
+          "200": {
+            "description": "Ressource modifiée"
+          }
+        }
+      }
+    },
+    "/resources/{id}": {
+      "get": {
+        "summary": "Récupérer une ressource par ID",
+        "tags": ["Resources"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ressource trouvée"
+          },
+          "404": {
+            "description": "Ressource non trouvée"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Supprimer une ressource",
+        "tags": ["Resources"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ressource supprimée"
           }
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Resources",
+      "description": "Gestion des ressources"
+    }
+  ]
+}
